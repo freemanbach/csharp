@@ -1,0 +1,16 @@
+C:\Users\flo1\csharp\ParseCSV\bin\Debug\ParseCSV.exe.config
+C:\Users\flo1\csharp\ParseCSV\bin\Debug\ParseCSV.exe
+C:\Users\flo1\csharp\ParseCSV\bin\Debug\ParseCSV.pdb
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\ParseCSV.csproj.AssemblyReference.cache
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\ParseCSV.csproj.SuggestedBindingRedirects.cache
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\MainWindow.g.cs
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\App.g.cs
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\ParseCSV_MarkupCompile.cache
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\ParseCSV_MarkupCompile.lref
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\MainWindow.baml
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\ParseCSV.g.resources
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\ParseCSV.Properties.Resources.resources
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\ParseCSV.csproj.GenerateResource.cache
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\ParseCSV.csproj.CoreCompileInputs.cache
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\ParseCSV.exe
+C:\Users\flo1\csharp\ParseCSV\obj\Debug\ParseCSV.pdb
