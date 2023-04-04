@@ -1,0 +1,16 @@
+C:\Users\flo1\csharp\SimpleStructure2\bin\Debug\SimpleStructure2.exe.config
+C:\Users\flo1\csharp\SimpleStructure2\bin\Debug\SimpleStructure2.exe
+C:\Users\flo1\csharp\SimpleStructure2\bin\Debug\SimpleStructure2.pdb
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\SimpleStructure2.csproj.AssemblyReference.cache
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\SimpleStructure2.csproj.SuggestedBindingRedirects.cache
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\MainWindow.g.cs
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\App.g.cs
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\SimpleStructure2_MarkupCompile.cache
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\SimpleStructure2_MarkupCompile.lref
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\MainWindow.baml
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\SimpleStructure2.g.resources
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\SimpleStructure2.Properties.Resources.resources
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\SimpleStructure2.csproj.GenerateResource.cache
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\SimpleStructure2.csproj.CoreCompileInputs.cache
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\SimpleStructure2.exe
+C:\Users\flo1\csharp\SimpleStructure2\obj\Debug\SimpleStructure2.pdb
