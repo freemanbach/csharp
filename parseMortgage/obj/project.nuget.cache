@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9wR5B5nKe3h5S6enMymzptGSL1FcZ3L2HI8u6BrcNjAtNtCZqVJpbDE/hxju9BwTxACXeJbDe6eTDbG4DxM/KA==",
+  "dgSpecHash": "idvVkqmOo0R+hLbxxlmrE7FhSpL4POqwph+xadQ3uyhyx/68vBqexLoD24JsAfxHB3LcPIA1bBx220bzuWsOew==",
   "success": true,
-  "projectFilePath": "/Users/flo/datascience/csharp/parseMortgage/parseMortgage.csproj",
+  "projectFilePath": "/Users/flo/github/csharp/parseMortgage/parseMortgage.csproj",
   "expectedPackageFiles": [
     "/Users/flo/.nuget/packages/htmlagilitypack/1.11.46/htmlagilitypack.1.11.46.nupkg.sha512",
     "/Users/flo/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",

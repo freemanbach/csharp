@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/flo/datascience/csharp/parseMortgage/parseMortgage.csproj": {}
+    "/Users/flo/github/csharp/parseMortgage/parseMortgage.csproj": {}
   },
   "projects": {
-    "/Users/flo/datascience/csharp/parseMortgage/parseMortgage.csproj": {
+    "/Users/flo/github/csharp/parseMortgage/parseMortgage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/flo/datascience/csharp/parseMortgage/parseMortgage.csproj",
+        "projectUniqueName": "/Users/flo/github/csharp/parseMortgage/parseMortgage.csproj",
         "projectName": "parseMortgage",
-        "projectPath": "/Users/flo/datascience/csharp/parseMortgage/parseMortgage.csproj",
+        "projectPath": "/Users/flo/github/csharp/parseMortgage/parseMortgage.csproj",
         "packagesPath": "/Users/flo/.nuget/packages/",
-        "outputPath": "/Users/flo/datascience/csharp/parseMortgage/obj/",
+        "outputPath": "/Users/flo/github/csharp/parseMortgage/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/flo/.nuget/NuGet/NuGet.Config"
@@ -63,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/dotnet7/sdk/7.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/dotnet7/sdk/7.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }
