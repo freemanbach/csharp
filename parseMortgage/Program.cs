@@ -14,11 +14,12 @@ using System.Linq;
 namespace parseMortgage {
     public class Program {
         /**
-        ** Retrieve Mortgage Rates from the mortgage Rate Daily 
-        ** returns mortage_rate[0] is 30 years Mortgage
-        ** returns mortage_rate[1] is 15 years Mortgage
+        ** Retrieve Mortgage News Daily Mort Rates 
+        ** https://www.mortgagenewsdaily.com/mortgage-rates
+        ** returns rate[0] is 30 years Mortgage
+        ** returns rate[1] is 15 years Mortgage
         **/
-        public static List<string> getRates() {
+        public static List<string> getNewsDailyRates() {
 
             List<string> rates = new List<string>();
             var tmp = "";
@@ -37,11 +38,61 @@ namespace parseMortgage {
             return rates;
         }
 
+        /**
+        ** Retrieve Freddie Mac Mortgage Rates 
+        ** https://www.freddiemac.com/index.html
+        ** returns rate[0] is 30 years Mortgage
+        ** returns rate[1] is 15 years Mortgage
+        **/
+        public static List<string> getFreddieMacRates() {
+
+            List<string> rates = new List<string>();
+            var tmp = "";
+            string url = "https://www.freddiemac.com/index.html";
+            HtmlWeb web = new HtmlWeb();
+            var html = web.Load(url);
+            var node = html.DocumentNode.SelectNodes("//div[contains(@class,'rate-percent')]");
+
+            foreach (var a in node){
+                tmp = a.InnerHtml.ToString().Trim();
+                string [] line = tmp.Split('<');
+                rates.Add(line[0]);
+            }
+            return rates;
+        }
+
+        /**
+        ** Retrieve Bankrate Mortgage Rates 
+        ** https://www.bankrate.com/mortgages/mortgage-rates/#mortgage-industry-insights
+        ** returns rate[0] is 30 years Mortgage
+        ** returns rate[1] is 15 years Mortgage
+        **/
+        public static List<string> getBankrateRates() {
+
+            List<string> rates = new List<string>();
+            var tmp = "";
+            string url = "https://www.bankrate.com/mortgages/mortgage-rates/#mortgage-industry-insights";
+            HtmlWeb web = new HtmlWeb();
+            var html = web.Load(url);
+            var node = html.DocumentNode.SelectNodes("//td[contains(@class,'series-percent')]");
+
+            foreach (var a in node){
+                tmp = a.InnerHtml.ToString().Trim();
+                tmp = tmp.Remove(tmp.Length - 1);
+                rates.Add(tmp);
+            }
+            rates.RemoveRange(2,rates.Count-2);
+
+            return rates;
+        }
+
+
         public static void Main(string [] args) {
             
             List <string> mortage_rate = new List<string>();
             List <string> mortage_items = new List<string>{"30 Years Mortgage Rate", "15 Years Mortgage Rate" };
-            mortage_rate = getRates();
+
+            mortage_rate = getBankrateRates();
             Console.WriteLine("\n\n");
             for (int i = 0; i <mortage_rate.Count; i++) {
                 Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}");
