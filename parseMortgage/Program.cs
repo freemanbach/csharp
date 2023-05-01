@@ -92,10 +92,24 @@ namespace parseMortgage {
             List <string> mortage_rate = new List<string>();
             List <string> mortage_items = new List<string>{"30 Years Mortgage Rate", "15 Years Mortgage Rate" };
 
-            mortage_rate = getBankrateRates();
-            Console.WriteLine("\n\n");
+            mortage_rate = getNewsDailyRates();
             for (int i = 0; i <mortage_rate.Count; i++) {
-                Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}");
+                Console.WriteLine($"{mortage_rate[i]}");
+            }
+            Console.WriteLine("\n\n");
+            mortage_rate.Clear();
+
+            
+            mortage_rate = getFreddieMacRates();
+            for (int i = 0; i <mortage_rate.Count; i++) {
+                Console.WriteLine($"{mortage_rate[i]}");
+            }
+            Console.WriteLine("\n\n");
+            mortage_rate.Clear();
+
+            mortage_rate = getBankrateRates();
+            for (int i = 0; i <mortage_rate.Count; i++) {
+                Console.WriteLine($"{mortage_rate[i]}");
             }
         }
     }
