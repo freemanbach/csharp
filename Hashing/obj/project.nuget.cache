@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KNOb3B/Pi8GgasnNWquQI/ILA4rob4bva9LggRfAC+vlunvVkirBLZQWCURG7EM8b/NjTWnUDNcON84aUXb8XA==",
+  "dgSpecHash": "6S35epT5XoP2KDoWaHdyQ8MC0YK6AoCHAGNCXV4nkKsZgrje0IagnP6BtQ89PG8ppiJOIbkfj46c7GEZd+KnCQ==",
   "success": true,
-  "projectFilePath": "/Users/flo/github/Hashing/Hashing.csproj",
+  "projectFilePath": "/Users/flo/github/csharp/Hashing/Hashing.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

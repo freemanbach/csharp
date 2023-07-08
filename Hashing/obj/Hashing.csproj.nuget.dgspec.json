@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/flo/github/Hashing/Hashing.csproj": {}
+    "/Users/flo/github/csharp/Hashing/Hashing.csproj": {}
   },
   "projects": {
-    "/Users/flo/github/Hashing/Hashing.csproj": {
+    "/Users/flo/github/csharp/Hashing/Hashing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/flo/github/Hashing/Hashing.csproj",
+        "projectUniqueName": "/Users/flo/github/csharp/Hashing/Hashing.csproj",
         "projectName": "Hashing",
-        "projectPath": "/Users/flo/github/Hashing/Hashing.csproj",
+        "projectPath": "/Users/flo/github/csharp/Hashing/Hashing.csproj",
         "packagesPath": "/Users/flo/.nuget/packages/",
-        "outputPath": "/Users/flo/github/Hashing/obj/",
+        "outputPath": "/Users/flo/github/csharp/Hashing/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/flo/.nuget/NuGet/NuGet.Config"
