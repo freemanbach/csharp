@@ -4,6 +4,8 @@
 ** email       : flo@radford.edu
 ** Description : provide 256, 384 and 512 sha hashes on a file or files
 **             : on the command prompt in a windows/mac/linux.
+** Additional
+** Package     : dotnet add package BouncyCastle.Cryptography --version 2.2.1
 **/
 
 using System;
@@ -21,6 +23,20 @@ using System.Security.Cryptography;
 namespace Hashing {
 
     public class Program {
+        
+        // Generates SHA 1
+        public static List<string> gensha1hash(List<string> myfiles) {
+            List <string> csumList = new List<string>();
+
+            foreach (string file in myfiles) {
+                using (FileStream stream = File.OpenRead(file)){
+                    SHA1 sha1 = SHA1.Create();
+                    byte[] hashvalue = sha1.ComputeHash(stream);
+                    csumList.Add(BitConverter.ToString(hashvalue).Replace("-", String.Empty));
+                }
+            }
+            return csumList;
+        }
 
         // Generates SHA 512
         public static List<string> gen512hash(List<string> myfiles) {
