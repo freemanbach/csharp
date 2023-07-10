@@ -97,19 +97,19 @@ namespace Hashing {
         public static List<string> chooseAlgo(List<string> myfiles, string shatype) {
             List <string> csumList = new List<string>();
 
-            if (shatype.ToLower().Trim() == "sha1") {
+            if (shatype.ToLower().Trim() == "sha1" || shatype.ToLower().Trim() == "sha") {
                 csumList = gensha1hash(myfiles);
                 return csumList;
 
-            } else if (shatype.ToLower().Trim() == "sha256") {
+            } else if (shatype.ToLower().Trim() == "sha256" || shatype.ToLower().Trim() == "sha2") {
                 csumList = gen256hash(myfiles);
                 return csumList;
 
-            } else if (shatype.ToLower().Trim() == "sha384") {
+            } else if (shatype.ToLower().Trim() == "sha384" || shatype.ToLower().Trim() == "sha3") {
                 csumList = gen384hash(myfiles);
                 return csumList;
 
-            } else if (shatype.ToLower().Trim() == "sha512") {
+            } else if (shatype.ToLower().Trim() == "sha512" || shatype.ToLower().Trim() == "sha5") {
                 csumList = gen512hash(myfiles);
                 return csumList;
 
