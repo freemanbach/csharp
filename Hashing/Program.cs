@@ -93,15 +93,55 @@ namespace Hashing {
             }
             return csumList;
         }
+        
+        public static List<string> chooseAlgo(List<string> myfiles, string shatype) {
+            List <string> csumList = new List<string>();
 
+            if (shatype.ToLower().Trim() == "sha1") {
+                csumList = gensha1hash(myfiles);
+                return csumList;
+
+            } else if (shatype.ToLower().Trim() == "sha256") {
+                csumList = gen256hash(myfiles);
+                return csumList;
+
+            } else if (shatype.ToLower().Trim() == "sha384") {
+                csumList = gen384hash(myfiles);
+                return csumList;
+
+            } else if (shatype.ToLower().Trim() == "sha512") {
+                csumList = gen512hash(myfiles);
+                return csumList;
+
+            } else {
+                Console.WriteLine("No other Sha Algorithm options, exiting....");
+                Environment.Exit(0);
+            }
+
+            return csumList;
+        }
+
+        /******************************************************************
+        * allow an user to choose the algorithm from the following algorithms
+        * 
+        * Use        : Hashing file1 file2... HashAlgorithm
+        * Algorithms : sha1 sha256 sha384 sha512
+        * Example    : Hashing resume.docx sha256
+        ******************************************************************/
         public static void Main(string [] args) {
+            string type = "";
             List <string> files = new List<string>();
             List <string> data = new List<string>();
 
             if (args.Length == 0) {
                 Console.WriteLine("Enter in atleast one file on CMD Prompt.");
             } else {
-                foreach (string f in args) {
+                // Some Forbidden Magick
+                type = args[args.Length - 1];
+                List<string> tfiles = new List<string>(args);
+                tfiles.RemoveAt(tfiles.Count - 1);
+
+                foreach (string f in tfiles) {
                     if (File.Exists(f)) {
                         files.Add(f);
                     } else {
@@ -109,7 +149,8 @@ namespace Hashing {
                         Environment.Exit(0);
                     }
                 }
-                data = genhash(files);
+                data = chooseAlgo(files, type);
+                //data = genhash(files);
                 for(int a=0; a<data.Count; a++) {
                     Console.WriteLine("*{0}  {1}", data[a], files[a]);
                 }
