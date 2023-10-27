@@ -1,0 +1,14 @@
+C:\Users\flo1\github\csharp\Hashing\bin\Debug\net6.0\Hashing.exe
+C:\Users\flo1\github\csharp\Hashing\bin\Debug\net6.0\Hashing.deps.json
+C:\Users\flo1\github\csharp\Hashing\bin\Debug\net6.0\Hashing.runtimeconfig.json
+C:\Users\flo1\github\csharp\Hashing\bin\Debug\net6.0\Hashing.dll
+C:\Users\flo1\github\csharp\Hashing\bin\Debug\net6.0\Hashing.pdb
+C:\Users\flo1\github\csharp\Hashing\obj\Debug\net6.0\Hashing.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\flo1\github\csharp\Hashing\obj\Debug\net6.0\Hashing.AssemblyInfoInputs.cache
+C:\Users\flo1\github\csharp\Hashing\obj\Debug\net6.0\Hashing.AssemblyInfo.cs
+C:\Users\flo1\github\csharp\Hashing\obj\Debug\net6.0\Hashing.csproj.CoreCompileInputs.cache
+C:\Users\flo1\github\csharp\Hashing\obj\Debug\net6.0\Hashing.dll
+C:\Users\flo1\github\csharp\Hashing\obj\Debug\net6.0\refint\Hashing.dll
+C:\Users\flo1\github\csharp\Hashing\obj\Debug\net6.0\Hashing.pdb
+C:\Users\flo1\github\csharp\Hashing\obj\Debug\net6.0\Hashing.genruntimeconfig.cache
+C:\Users\flo1\github\csharp\Hashing\obj\Debug\net6.0\ref\Hashing.dll

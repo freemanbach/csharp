@@ -16,6 +16,7 @@ using System.Linq;
 using System.Xml.XPath;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Runtime.Intrinsics.Arm;
 // using System.Net.Http;
 // using System.Threading;
 // using System.Threading.Tasks;
@@ -23,7 +24,25 @@ using System.Security.Cryptography;
 namespace Hashing {
 
     public class Program {
-        
+
+        public static void showVersion() {
+            int ma = 0;
+            int mi = 0;
+            int pa = 1;
+            Console.WriteLine(" \nVersion: {0}.{1}.{2} \n",ma, mi, pa );
+        }
+
+        public static void showHelp() {
+            /*
+             *Algorithms : sha1 sha256 sha384 sha512
+             *Example    : Hashing resume.docx sha256
+             */
+            Console.Clear();
+            Console.WriteLine("\n\n");
+            Console.WriteLine("Available Algorithms: sha1, sha256, sha384, sha512");
+            Console.WriteLine("Examples: Hashing.exe FILENAME Algorithms");
+        }
+
         // Generates SHA 1
         public static List<string> gensha1hash(List<string> myfiles) {
             List <string> csumList = new List<string>();
@@ -134,7 +153,9 @@ namespace Hashing {
             List <string> data = new List<string>();
 
             if (args.Length == 0) {
-                Console.WriteLine("Enter in atleast one file on CMD Prompt.");
+                showHelp();
+                showVersion();
+                //Console.WriteLine("Enter in atleast one file on CMD Prompt.");
             } else {
                 // Some Forbidden Magick
                 type = args[args.Length - 1];
@@ -151,8 +172,8 @@ namespace Hashing {
                 }
                 data = chooseAlgo(files, type);
                 //data = genhash(files);
-                for(int a=0; a<data.Count; a++) {
-                    Console.WriteLine("*{0}  {1}", data[a], files[a]);
+                for(int a=0; a<data.Count; a++) { 
+                    Console.WriteLine("{0}  {1}", data[a], files[a]);
                 }
                 
             }
