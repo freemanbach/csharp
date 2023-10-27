@@ -118,6 +118,8 @@ namespace parseMortgage {
             }
             Console.WriteLine("\n");
             mortage_rate.Clear();
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
 
         }
     }
