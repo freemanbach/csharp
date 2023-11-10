@@ -96,7 +96,7 @@ namespace parseMortgage {
             mortage_rate = getNewsDailyRates();
             Console.WriteLine("From News Daily Rate:\n");
             for (int i = 0; i <mortage_rate.Count; i++) {
-                Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}");
+                Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}%");
             }
             Console.WriteLine("\n");
             mortage_rate.Clear();
@@ -105,7 +105,7 @@ namespace parseMortgage {
             Console.WriteLine("\n");
             Console.WriteLine("From Freddie Mac\n");
             for (int i = 0; i <mortage_rate.Count; i++) {
-                Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}");
+                Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}%");
             }
             Console.WriteLine("\n");
             mortage_rate.Clear();
@@ -114,13 +114,12 @@ namespace parseMortgage {
             Console.WriteLine("\n");
             Console.WriteLine("From Bankrate\n");
             for (int i = 0; i <mortage_rate.Count; i++) {
-                Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}");
+                Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}%");
             }
             Console.WriteLine("\n");
             mortage_rate.Clear();
             Console.WriteLine("Press enter to continue...");
             Console.ReadLine();
-
         }
     }
 }
