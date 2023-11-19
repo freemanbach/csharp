@@ -88,10 +88,13 @@ namespace parseMortgage {
 
 
         public static void Main(string [] args) {
-            
+
+            DateTime dt = DateTime.Now;
             List <string> mortage_rate = new List<string>();
             List <string> mortage_items = new List<string>{"30 Years Mortgage Rate", "15 Years Mortgage Rate" };
 
+            Console.WriteLine("\n");
+            Console.WriteLine("Date: " + dt.ToString("MM/dd/yyyy HH:mm"));
             Console.WriteLine("\n");
             mortage_rate = getNewsDailyRates();
             Console.WriteLine("From News Daily Rate:\n");
