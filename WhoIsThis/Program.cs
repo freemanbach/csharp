@@ -9,17 +9,13 @@ using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 using System.CommandLine.Invocation;
 using System.CommandLine.Builder;
-using System.Data;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Reflection.Metadata;
-// dotnet build
+
 namespace WhoIsThis {
     class Program {
 
         public static string procURL(string weburl) {
-            string? tldn = "";
             string[] tmp  = weburl.Trim().Split('.');
-            tldn = tmp[tmp.Length - 1];
+            string tldn = tmp[tmp.Length - 1];
             return tldn;
         }
 
@@ -39,7 +35,7 @@ namespace WhoIsThis {
 
             var portOption = new Option<int>
                 (name:"--port", 
-                description:"Defalt port is 43, specify other port if necessary.", 
+                description:"Default port is 43, specify other port if necessary.", 
                 getDefaultValue: () => 43);
             portOption.AddAlias("-p");
 
