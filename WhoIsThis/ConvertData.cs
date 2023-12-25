@@ -283,7 +283,7 @@ namespace WhoIsThis {
                 { "na","whois.na-nic.com.na"},
                 { "name","whois.nic.name"},
                 { "navy","whois.nic.navy"},
-                { "net","webwhois.verisign.com"},
+                { "net","whois.verisign-grs.com"},
                 { "net.za","net-whois.registry.net.za"},
                 { "network","whois.nic.network"},
                 { "news","whois.nic.news"},
