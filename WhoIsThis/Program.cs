@@ -13,6 +13,15 @@ using System.CommandLine.Builder;
 namespace WhoIsThis {
     class Program {
 
+        /*
+         * whois.denic.de wont take any requests on port 43, it is the reason why i cant get 
+         * data pull from whois.denic.de and had gotten a weird ERROR message.
+         * Must use this instead: https://webwhois.denic.de/?lang=en&query=zeit.de
+         * 
+         * Also, where to find a whois service strictly for IP v4 and v6 only for around the world ?
+         * Another Solution would be to do a nslookup inside this code and then pull the dn from the result.
+         */
+
         public static string procURL(string weburl) {
             string[] tmp  = weburl.Trim().Split('.');
             string tldn = tmp[tmp.Length - 1];
