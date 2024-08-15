@@ -94,7 +94,7 @@ namespace parseMortgage {
             List <string> mortage_items = new List<string>{"30 Years Mortgage Rate", "15 Years Mortgage Rate" };
 
             Console.WriteLine("\n");
-            Console.WriteLine("Date: " + dt.ToString("MM/dd/yyyy HH:mm"));
+            Console.WriteLine("Date: " + dt.ToString("MM/dd/yyyy HH:mm") + " EST.");
             Console.WriteLine("\n");
             mortage_rate = getNewsDailyRates();
             Console.WriteLine("From News Daily Rate:\n");
