@@ -1,6 +1,7 @@
 ﻿/*
  * 
  * Author        : freemanbach
+ * email         : flo@radford.edu
  * Date          : 20251224
  * desc          : a C# python installer
  * archecture    : ( X86, X64, Arm64 )
@@ -15,15 +16,11 @@
  * 3.13.11_arm64 : https://www.python.org/ftp/python/3.13.11/python-3.13.11-arm64.exe
  * 3.13.11_src   : https://www.python.org/ftp/python/3.13.11/Python-3.13.11.tgz
  * 
- * args:   python-%major%.%minor%.%patch%-amd64.exe /quiet /passive InstallAllUsers=0 
- * TargetDir=C:\Python%major%%minor%%patch% AssociateFiles=1 CompileAll=1 PrependPath=0 Shortcuts=0 
- * Include_doc=1 Include_debug=0 Include_dev=1 Include_exe=1 Include_launcher=1 InstallLauncherAllUsers=1 
- * Include_lib=1 Include_pip=1 Include_symbol=0 Include_tcltk=1 Include_test=1 Include_tools=1
- * 
  */
 
 using System;
 using System.IO;
+using System.Linq;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Runtime.InteropServices;
@@ -37,23 +34,61 @@ namespace InstallPython {
         public static async Task<string> chkConnection(string url) {
             string code = "";
             using (HttpClient client = new HttpClient()) {
-                HttpResponseMessage response = await client.GetAsync(url);
-                if (response.IsSuccessStatusCode) {
-                    code = response.StatusCode.ToString();
+                HttpResponseMessage resp = await client.GetAsync(url);
+                resp.EnsureSuccessStatusCode();
+                if (resp.IsSuccessStatusCode) {
+                    code = resp.StatusCode.ToString();
                 } 
                 return code;
             }
         }
 
+        public static void executePythonInstaller(string fn) {
+
+            string parts = fn.Split('-')[1], version="";
+            string[] tmp = parts.Split('.');
+            foreach (string s in tmp) {
+                version += s;
+            }
+
+            string param = $"/quiet /passive InstallAllUsers=0 TargetDir=C:\\Python{version} AssociateFiles=1 CompileAll=1 PrependPath=0 Shortcuts=0 Include_doc=1 Include_debug=0 Include_dev=1 Include_exe=1 Include_launcher=1 InstallLauncherAllUsers=1 Include_lib=1 Include_pip=1 Include_symbol=0 Include_tcltk=1 Include_test=1 Include_tools=1";
+
+            var startInfo = new ProcessStartInfo {
+                    FileName = fn,
+                    Arguments = param
+                    // RedirectStandardInput = true,
+                    // CreateNoWindow = true,
+                    // UseShellExecute = false
+            };
+
+            var process = new Process {
+                StartInfo = startInfo,
+                EnableRaisingEvents = true
+            };
+
+            process.Exited += (sender, e) =>
+            {
+                Console.WriteLine("Process has exited.");
+            };
+
+            process.Start();
+            Console.WriteLine("Waiting for process to exit...");
+            process.WaitForExit();
+
+        }
+
+        // https://www.code4it.dev/blog/download-and-save-files/
         public static async Task DownloadAndSave(string srcFile, string dstFolder, string dstFile) {
             Stream fs = await GetFileStream(srcFile);
-
+            
             if ( fs != Stream.Null) {
                 await SaveStream(fs, dstFolder, dstFile);
             }
         }
 
         public static async Task<Stream> GetFileStream(string url) {
+            // getstreamasync is reading chunk by chunk
+            // getasync is reading everything in the stream
             HttpClient httpClient = new HttpClient();
             Stream fs = await httpClient.GetStreamAsync(url);
             return fs;
@@ -70,7 +105,6 @@ namespace InstallPython {
             }
             Console.WriteLine("Completed.");
         }
-
         public static async Task Main(string[] args) {
 
             // the two latest versions of Python
@@ -84,8 +118,8 @@ namespace InstallPython {
             string arch = $"{RuntimeInformation.OSArchitecture}";
 
             // ///////////////////////////////////////////////////////////////////////////////////
-            // python website looked like a beast to parse
-            // just the two most recent versions of supported python minus alpha and beta releases
+            // python website looked like a beast to parse, wanted to pull the latest two versions
+            // based off of the website instead of hardcoding the versions.
             // ///////////////////////////////////////////////////////////////////////////////////
 
             int choice = 0;
@@ -116,18 +150,45 @@ namespace InstallPython {
                         filename = tmp[tmp.Length - 1];
                         Stream fs = (Stream)await GetFileStream(url);
                         await SaveStream(fs, path, filename);
+
+                        // installing Python
+                        if ( File.Exists(filename) ) {
+                            executePythonInstaller(filename);
+                        } else {
+                            Console.WriteLine("Something Wrong, File not Found !");
+                            Environment.Exit(1);
+                        }
+
                     } else if (arch == "X64") {
                         url = baseurl + latest + "/" + "python-" + latest + "-amd64.exe";
                         tmp = url.Split('/');
                         filename = tmp[tmp.Length - 1];
                         Stream fs = (Stream)await GetFileStream(url);
                         await SaveStream(fs, path, filename);
+
+                        // installing Python
+                        if (File.Exists(filename)) {
+                            executePythonInstaller(filename);
+                        } else {
+                            Console.WriteLine("Something Wrong, File not Found !");
+                            Environment.Exit(1);
+                        }
+
                     } else if (arch == "ARM64") {
                         url = baseurl + latest + "/" + "python-" + latest + "-amd64.exe";
                         tmp = url.Split('/');
                         filename = tmp[tmp.Length - 1];
                         Stream fs = (Stream)await GetFileStream(url);
                         await SaveStream(fs, path, filename);
+
+                        // installing Python
+                        if (File.Exists(filename)) {
+                            executePythonInstaller(filename);
+                        } else {
+                            Console.WriteLine("Something Wrong, File not Found !");
+                            Environment.Exit(1);
+                        }
+
                     }
                 } else if ( choice == 2 ) {
                     // older version
@@ -137,18 +198,45 @@ namespace InstallPython {
                         filename = tmp[tmp.Length - 1];
                         Stream fs = (Stream)await GetFileStream(url);
                         await SaveStream(fs, path, filename);
+
+                        // installing Python
+                        if (File.Exists(filename)) {
+                            executePythonInstaller(filename);
+                        } else {
+                            Console.WriteLine("Something Wrong, File not Found !");
+                            Environment.Exit(1);
+                        }
+
                     } else if (arch == "X64") {
                         url = baseurl + older + "/" + "python-" + older + "-amd64.exe";
                         tmp = url.Split('/');
                         filename = tmp[tmp.Length - 1];
                         Stream fs = (Stream)await GetFileStream(url);
                         await SaveStream(fs, path, filename);
+
+                        // installing Python
+                        if (File.Exists(filename)) {
+                            executePythonInstaller(filename);
+                        } else {
+                            Console.WriteLine("Something Wrong, File not Found !");
+                            Environment.Exit(1);
+                        }
+
                     } else if (arch == "ARM64") {
                         url = baseurl + older + "/" + "python-" + older + "-amd64.exe";
                         tmp = url.Split('/');
                         filename = tmp[tmp.Length - 1];
                         Stream fs = (Stream)await GetFileStream(url);
                         await SaveStream(fs, path, filename);
+
+                        // installing Python
+                        if (File.Exists(filename)) {
+                            executePythonInstaller(filename);
+                        } else {
+                            Console.WriteLine("Something Wrong, File not Found !");
+                            Environment.Exit(1);
+                        }
+
                     }
                 } else {
                     // exit program
