@@ -1,25 +1,26 @@
 ﻿/*
  * 
- * Author        : freemanbach
- * email         : flo@radford.edu
- * Date          : 20251229
- * desc          : a C# python installer
- * archecture    : ( X86, X64, Arm64 )
+ * Author         : freemanbach
+ * email          : flo@radford.edu
+ * Date           : 20251231
+ * desc           : a C# python installer
+ * archecture     : ( X86, X64, Arm64 )
  * 
- * 3.14.2_x32    : https://www.python.org/ftp/python/3.14.2/python-3.14.2.exe
- * 3.14.2_x64    : https://www.python.org/ftp/python/3.14.2/python-3.14.2-amd64.exe
- * 3.14.2_arm64  : https://www.python.org/ftp/python/3.14.2/python-3.14.2-arm64.exe
- * 3.14.2_src    : https://www.python.org/ftp/python/3.13.2/Python-3.14.2.tgz
+ * 3.14.2_x32     : https://www.python.org/ftp/python/3.14.2/python-3.14.2.exe
+ * 3.14.2_x64     : https://www.python.org/ftp/python/3.14.2/python-3.14.2-amd64.exe
+ * 3.14.2_arm64   : https://www.python.org/ftp/python/3.14.2/python-3.14.2-arm64.exe
+ * 3.14.2_src     : https://www.python.org/ftp/python/3.13.2/Python-3.14.2.tgz
  *
- * 3.13.11_x32   : https://www.python.org/ftp/python/3.13.11/python-3.13.11.exe
- * 3.13.11_x64   : https://www.python.org/ftp/python/3.13.11/python-3.13.11-amd64.exe
- * 3.13.11_arm64 : https://www.python.org/ftp/python/3.13.11/python-3.13.11-arm64.exe
- * 3.13.11_src   : https://www.python.org/ftp/python/3.13.11/Python-3.13.11.tgz
+ * 3.13.11_x32    : https://www.python.org/ftp/python/3.13.11/python-3.13.11.exe
+ * 3.13.11_x64    : https://www.python.org/ftp/python/3.13.11/python-3.13.11-amd64.exe
+ * 3.13.11_arm64  : https://www.python.org/ftp/python/3.13.11/python-3.13.11-arm64.exe
+ * 3.13.11_src    : https://www.python.org/ftp/python/3.13.11/Python-3.13.11.tgz
  * 
- * Pending items :
+ * future items :
  *                 pull version info from python.org
- *                 tqdm tool to show downloading progress <- someone needs to re-write this for C#
- *                 CSharpTQDM is too old doesnt work with dotnet 8 and 10
+ *                 tqdm tool to show downloading progress
+ *                 update pip after install (just added)
+ *                 allow to install additional python packages (datascience, networking, security, etc...)
  *                 
  * use case      : may work well in an University / College Setting for mass deployment
  */
@@ -62,14 +63,16 @@ namespace InstallPython {
 
             // custom python params from my CMD scripts
             string param = $"/quiet /passive InstallAllUsers=0 TargetDir=C:\\Python{version} AssociateFiles=1 CompileAll=1 PrependPath=0 Shortcuts=0 Include_doc=1 Include_debug=0 Include_dev=1 Include_exe=1 Include_launcher=1 InstallLauncherAllUsers=1 Include_lib=1 Include_pip=1 Include_symbol=0 Include_tcltk=1 Include_test=1 Include_tools=1";
+            Console.WriteLine("Starting Python Installation.");
 
             // dotnet windows process control mechanism
             var startInfo = new ProcessStartInfo {
                     FileName = fn,
                     Arguments = param
-                    // RedirectStandardInput = true,
-                    // CreateNoWindow = true,
-                    // UseShellExecute = false
+                    //UseShellExecute = false
+                    //CreateNoWindow = true,
+                    //RedirectStandardOutput = true,
+                    //RedirectStandardError = true
             };
 
             var process = new Process {
@@ -79,13 +82,42 @@ namespace InstallPython {
 
             process.Exited += (sender, e) =>
             {
-                Console.WriteLine("Process has exited.");
+                Console.WriteLine("Python Installation has exited.");
             };
 
             process.Start();
             Console.WriteLine("Waiting for process to exit...");
             process.WaitForExit();
+        }
 
+        public static void updatePIP(string fn) {
+            string parts = fn.Split('-')[1], version = "";
+            string[] tmp = parts.Split('.');
+            foreach (string s in tmp) {
+                version += s;
+            }
+
+            string cmd = $"C:\\Python{version}\\python.exe";
+            string param = $"-m pip install --upgrade pip";
+            Console.WriteLine("Upgrading PIP.");
+
+            var startInfo = new ProcessStartInfo {
+                FileName = cmd,
+                Arguments = param
+            };
+
+            var process = new Process {
+                StartInfo = startInfo,
+                EnableRaisingEvents = true
+            };
+
+            process.Exited += (sender, e) => {
+                Console.WriteLine("Upgrading PIP has exited.");
+            };
+
+            process.Start();
+            Console.WriteLine("Waiting for process to exit...");
+            process.WaitForExit();
         }
 
         // Example: https://www.code4it.dev/blog/download-and-save-files/
@@ -160,6 +192,7 @@ namespace InstallPython {
                 md5Hash(Path.Combine(path, filename));
                 Thread.Sleep(2000);
                 executePythonInstaller(filename);
+                updatePIP(filename);
             } else {
                 Console.WriteLine("Something Wrong, File not Found !");
                 Environment.Exit(1);
