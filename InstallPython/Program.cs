@@ -17,7 +17,7 @@
  * 3.13.11_src   : https://www.python.org/ftp/python/3.13.11/Python-3.13.11.tgz
  * 
  * Pending items :
- *                 checksum; pull version info from python.org
+ *                 pull version info from python.org
  *                 tqdm tool to show downloading progress <- someone needs to re-write this for C#
  *                 CSharpTQDM is too old doesnt work with dotnet 8 and 10
  *                 
@@ -27,11 +27,11 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Policy;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace InstallPython {
@@ -97,6 +97,7 @@ namespace InstallPython {
             }
         }
 
+        // Streaming down the data from python.org
         public static async Task<Stream> GetFileStream(string url) {
             // getstreamasync is reading chunk by chunk
             // getasync is reading everything in the stream
@@ -105,6 +106,7 @@ namespace InstallPython {
             return fs;
         }
 
+        // saving file to the Download location
         public static async Task SaveStream(Stream fs, string dstFolder, string dstFile) {
             if (!Directory.Exists(dstFolder))
                 Directory.CreateDirectory(dstFolder);
@@ -114,9 +116,22 @@ namespace InstallPython {
             using (FileStream outputFileStream = new FileStream(path, FileMode.CreateNew)) {
                 await fs.CopyToAsync(outputFileStream);
             }
-            Console.WriteLine("Completed.");
+            Console.WriteLine("Download Completed.");
         }
 
+        // Get MD5Sum 
+        public static void md5Hash(string fn) {
+            using (MD5 md5 = MD5.Create()) {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(fn);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++) {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+                Console.WriteLine($"MD5 Sum:  {sb.ToString()} \n");
+            }
+        }
         public static async Task processByArch(string baseurl, string version, string atype, string path) {
 
             string[] tmp;
@@ -128,26 +143,39 @@ namespace InstallPython {
                 arch = "-amd64.exe";
             } else if ( atype == "ARM64" ) {
                 arch = "-arm64.exe";
-            } 
+            } else {
+                // if it isnt the 3 from above, wdk what it could be
+                Console.WriteLine("System Architecture is unknown !");
+                Environment.Exit(0);
+            }
             
             string url = baseurl + version + "/" + "python-" + version + arch;
-            
-            // url = baseurl + older + "/" + "python-" + older + ".exe";
             tmp = url.Split('/');
             string filename = tmp[tmp.Length - 1];
-
             Stream fs = await GetFileStream(url);
-            
             await SaveStream(fs, path, filename);
 
             // installing Python
             if (File.Exists(filename)) {
+                md5Hash(Path.Combine(path, filename));
+                Thread.Sleep(2000);
                 executePythonInstaller(filename);
             } else {
                 Console.WriteLine("Something Wrong, File not Found !");
                 Environment.Exit(1);
             }
+        }
 
+        // Displaying menu
+        public static void menu(string latest, string older) {
+            Console.WriteLine($"--------------------------------------------------");
+            Console.WriteLine($"1) Python {latest} version                        ");
+            Console.WriteLine($"2) Python {older} version                         ");
+            Console.WriteLine($"3) Exit program                                   ");
+            Console.WriteLine($"                                                  ");
+            Console.WriteLine($"   Choose 1, 2, or 3                              ");
+            Console.WriteLine($"--------------------------------------------------");
+            Console.Write(">>> ");
         }
         public static async Task Main(string[] args) {
 
@@ -162,21 +190,14 @@ namespace InstallPython {
             string arch = $"{RuntimeInformation.OSArchitecture}";
 
             // ///////////////////////////////////////////////////////////////////////////////////
-            // python website looked like a beast to parse, wanted to pull the latest two versions
-            // based off of the website instead manually.
+            // python website looked like a beast to parse.
             // ///////////////////////////////////////////////////////////////////////////////////
 
             int choice = 0;
             string baseurl = "https://www.python.org/ftp/python/";
 
-            Console.WriteLine($"--------------------------------------------------");
-            Console.WriteLine($"1) Python {latest} version                        ");
-            Console.WriteLine($"2) Python {older} version                         ");
-            Console.WriteLine($"3) Exit program                                   ");
-            Console.WriteLine($"                                                  ");
-            Console.WriteLine($"   Choose 1, 2, or 3                              ");
-            Console.WriteLine($"--------------------------------------------------");
-            Console.Write(">>> ");
+            // menu
+            menu(latest, older);
             string temp = Console.ReadLine();
             bool ans = int.TryParse(temp, out choice);
 
