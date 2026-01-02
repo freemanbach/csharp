@@ -1,5 +1,13 @@
-﻿using System;
-using System.IO.Pipes;
+﻿/*
+ *
+ * Author         : freemanbach
+ * email          : flo@radford.edu
+ * Date           : 20250101
+ * desc           : a simple cmd line calculator
+ *
+ */
+
+using System;
 using System.Linq;
 
 namespace Calc {
@@ -43,6 +51,14 @@ namespace Calc {
                     Environment.Exit(0);
                 }
                 ans = Convert.ToDouble(dt[0]) / Convert.ToDouble(dt[1]);
+            } else if (t.Contains("**")) {
+                string a = t.Substring(0, t.IndexOf('*'));
+                string b = t.Substring(t.IndexOf('*')+2);
+                if (chkData(a, b) == true) {
+                    Console.WriteLine("Insufficent arguments!");
+                    Environment.Exit(0);
+                }
+                ans = Math.Pow(Convert.ToDouble(a), Convert.ToDouble(b) );
             } else if (t.Contains("*")) {
                 dt = t.Split('*');
                 if (chkData(dt[0], dt[1]) == true) {
@@ -91,6 +107,7 @@ namespace Calc {
                 Console.WriteLine("calc.exe  34-45.99                      ");
                 Console.WriteLine("calc.exe  34*45.99                      ");
                 Console.WriteLine("calc.exe  34/45.99                      ");
+                Console.WriteLine("calc.exe  2**12                         ");
                 Console.WriteLine("calc.exe  34%45                         ");
                 Console.WriteLine();
                 Environment.Exit(0);
@@ -99,7 +116,7 @@ namespace Calc {
                 string tmp = args[0];
 
                 if (tmp.Contains('+') || tmp.Contains('-') || tmp.Contains('*') ||
-                     tmp.Contains('/') || tmp.Contains('%')) {
+                     tmp.Contains('/') || tmp.Contains('%') || tmp.Contains("**") ) {
                     fans = compute(args[0]);
                 } else {
                     Console.WriteLine("Insufficient Arguments");
