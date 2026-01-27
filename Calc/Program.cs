@@ -14,12 +14,13 @@ namespace Calc {
     class Program {
 
         public static Boolean chkData(string t1, string t2) {
-           if (t2 == "" || t2 == "") {
+           if (t1 == "" || t2 == "") {
                 return true;
             } else {
                 return false;
             }
         }
+
         public static double compute(string t) {
 
             int d1 = 0, d2 = 0;
