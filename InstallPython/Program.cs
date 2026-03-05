@@ -2,19 +2,19 @@
  * 
  * Author         : freemanbach
  * email          : flo@radford.edu
- * Date           : 20251231
+ * Date           : 20260304
  * desc           : a C# python installer
  * archecture     : ( X86, X64, Arm64 )
  * 
- * 3.14.2_x32     : https://www.python.org/ftp/python/3.14.2/python-3.14.2.exe
- * 3.14.2_x64     : https://www.python.org/ftp/python/3.14.2/python-3.14.2-amd64.exe
- * 3.14.2_arm64   : https://www.python.org/ftp/python/3.14.2/python-3.14.2-arm64.exe
- * 3.14.2_src     : https://www.python.org/ftp/python/3.13.2/Python-3.14.2.tgz
+ * 3.14.3_x32     : https://www.python.org/ftp/python/3.14.3/python-3.14.3.exe
+ * 3.14.3_x64     : https://www.python.org/ftp/python/3.14.3/python-3.14.3-amd64.exe
+ * 3.14.3_arm64   : https://www.python.org/ftp/python/3.14.3/python-3.14.3-arm64.exe
+ * 3.14.3_src     : https://www.python.org/ftp/python/3.13.3/Python-3.14.3.tgz
  *
- * 3.13.11_x32    : https://www.python.org/ftp/python/3.13.11/python-3.13.11.exe
- * 3.13.11_x64    : https://www.python.org/ftp/python/3.13.11/python-3.13.11-amd64.exe
- * 3.13.11_arm64  : https://www.python.org/ftp/python/3.13.11/python-3.13.11-arm64.exe
- * 3.13.11_src    : https://www.python.org/ftp/python/3.13.11/Python-3.13.11.tgz
+ * 3.13.12_x32    : https://www.python.org/ftp/python/3.13.12/python-3.13.12.exe
+ * 3.13.12_x64    : https://www.python.org/ftp/python/3.13.12/python-3.13.12-amd64.exe
+ * 3.13.12_arm64  : https://www.python.org/ftp/python/3.13.12/python-3.13.12-arm64.exe
+ * 3.13.12_src    : https://www.python.org/ftp/python/3.13.12/Python-3.13.12.tgz
  * 
  * future items :
  *                 pull version info from python.org
@@ -89,7 +89,6 @@ namespace InstallPython {
             Console.WriteLine("Waiting for process to exit...");
             process.WaitForExit();
         }
-
         public static void updatePIP(string fn) {
             string parts = fn.Split('-')[1], version = "";
             string[] tmp = parts.Split('.');
@@ -213,8 +212,8 @@ namespace InstallPython {
         public static async Task Main(string[] args) {
 
             // the two latest versions of Python
-            string latest = "3.14.2";
-            string older = "3.13.11";
+            string latest = "3.14.3";
+            string older = "3.13.12";
 
             // user variables
             string userHome = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
