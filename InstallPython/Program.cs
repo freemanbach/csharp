@@ -240,19 +240,17 @@ namespace InstallPython {
             } else {
 
                 if (choice == 1) {
-
                     await processByArch(baseurl, latest, arch, path );
-
                 } else if ( choice == 2) {
-                
                     await processByArch(baseurl, older, arch, path);
-                }
-                else {
-                    // exit program
+                } else if (choice == 3) {
+                    Console.WriteLine("Exiting........"); 
+                    Environment.Exit(0);
+                } else {
+                    // invalid inputs
                     Console.WriteLine($"Invalid Selection {choice} ");
                     Environment.Exit(0);
                 }
-
             }
         }  
     }
