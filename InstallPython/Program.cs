@@ -163,6 +163,7 @@ namespace InstallPython {
                 Console.WriteLine($"MD5 Sum:  {sb.ToString()} \n");
             }
         }
+
         public static async Task processByArch(string baseurl, string version, string atype, string path) {
 
             string[] tmp;
