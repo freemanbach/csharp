@@ -2,7 +2,7 @@
  * 
  * Author         : freemanbach
  * email          : flo@radford.edu
- * Date           : 20260304
+ * Date           : 20260308
  * desc           : a C# python installer
  * archecture     : ( X86, X64, Arm64 )
  * 
@@ -23,6 +23,7 @@
  *                 allow to install additional python packages (datascience, networking, security, etc...)
  *                 
  * use case      : may work well in an University / College Setting for mass deployment
+ * Automation    : look at lines 236 and 237 if you want automation, set choice to 1 or 2
  */
 
 using System;
@@ -210,6 +211,7 @@ namespace InstallPython {
             Console.WriteLine($"--------------------------------------------------");
             Console.Write(">>> ");
         }
+
         public static async Task Main(string[] args) {
 
             // the two latest versions of Python
