@@ -8,6 +8,9 @@
  * 
  * Package        : dotnet add package Newtonsoft.Json
  * Warning        : dotnet build --property:WarningLevel=0
+ * Notes          : it might be best to simply parse the archive site rather than requesting 
+ *                : a JSON data since nasa servers could be down everyonce in a while
+ *
  *
  */
 
