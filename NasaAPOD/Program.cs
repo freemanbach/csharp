@@ -2,9 +2,9 @@
  * 
  * Author         : freemanbach
  * email          : flo@radford.edu
- * Date           : 20260312
- * desc           : a C# python installer
- * archecture     : ( X86, X64, Arm64 )
+ * Date           : 20260314
+ * desc           : NASA Astronomy Picture of the Day
+ * archecture     : You can compile it on your Platform ( X86, X64, Arm64 )
  * 
  * Package        : dotnet add package Newtonsoft.Json
  * Warning        : dotnet build --property:WarningLevel=0
