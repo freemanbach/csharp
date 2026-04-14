@@ -6,10 +6,10 @@
  * desc           : a C# python installer
  * archecture     : ( X86, X64, Arm64 )
  * 
- * 3.14.3_x32     : https://www.python.org/ftp/python/3.14.4/python-3.14.4.exe
- * 3.14.3_x64     : https://www.python.org/ftp/python/3.14.4/python-3.14.4-amd64.exe
- * 3.14.3_arm64   : https://www.python.org/ftp/python/3.14.4/python-3.14.4-arm64.exe
- * 3.14.3_src     : https://www.python.org/ftp/python/3.13.4/Python-3.14.4.tgz
+ * 3.14.4_x32     : https://www.python.org/ftp/python/3.14.4/python-3.14.4.exe
+ * 3.14.4_x64     : https://www.python.org/ftp/python/3.14.4/python-3.14.4-amd64.exe
+ * 3.14.4_arm64   : https://www.python.org/ftp/python/3.14.4/python-3.14.4-arm64.exe
+ * 3.14.4_src     : https://www.python.org/ftp/python/3.13.4/Python-3.14.4.tgz
  *
  * 3.13.12_x32    : https://www.python.org/ftp/python/3.13.12/python-3.13.12.exe
  * 3.13.12_x64    : https://www.python.org/ftp/python/3.13.12/python-3.13.12-amd64.exe
@@ -215,7 +215,7 @@ namespace InstallPython {
         public static async Task Main(string[] args) {
 
             // the two latest versions of Python
-            string latest = "3.14.3";
+            string latest = "3.14.4";
             string older = "3.13.12";
 
             // user variables
