@@ -2,7 +2,7 @@
  * 
  * Author         : freemanbach
  * email          : flo@radford.edu
- * Date           : 20260308
+ * Date           : 20260428
  * desc           : a C# python installer
  * archecture     : ( X86, X64, Arm64 )
  * 
@@ -63,7 +63,7 @@ namespace InstallPython {
             }
 
             // custom python params from my CMD scripts
-            string param = $"/quiet /passive InstallAllUsers=0 TargetDir=C:\\Python{version} AssociateFiles=1 CompileAll=1 PrependPath=0 Shortcuts=0 Include_doc=1 Include_debug=0 Include_dev=1 Include_exe=1 Include_launcher=1 InstallLauncherAllUsers=1 Include_lib=1 Include_pip=1 Include_symbol=0 Include_tcltk=1 Include_test=1 Include_tools=1 Include_freethreaded=0";
+            string param = $"/quiet /passive InstallAllUsers=0 TargetDir=C:\\Python{version} AssociateFiles=1 CompileAll=1 PrependPath=0 Shortcuts=0 Include_doc=1 Include_debug=0 Include_dev=1 Include_exe=1 Include_launcher=1 InstallLauncherAllUsers=1 Include_lib=1 Include_pip=1 Include_symbol=0 Include_tcltk=1 Include_test=1 Include_tools=1 Include_freethreaded=1";
             Console.WriteLine("Starting Python Installation.");
 
             // dotnet windows process control mechanism
