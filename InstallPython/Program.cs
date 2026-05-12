@@ -2,19 +2,19 @@
  * 
  * Author         : freemanbach
  * email          : flo@radford.edu
- * Date           : 20260428
+ * Date           : 20260511
  * desc           : a C# python installer
  * archecture     : ( X86, X64, Arm64 )
  * 
- * 3.14.4_x32     : https://www.python.org/ftp/python/3.14.4/python-3.14.4.exe
- * 3.14.4_x64     : https://www.python.org/ftp/python/3.14.4/python-3.14.4-amd64.exe
- * 3.14.4_arm64   : https://www.python.org/ftp/python/3.14.4/python-3.14.4-arm64.exe
- * 3.14.4_src     : https://www.python.org/ftp/python/3.13.4/Python-3.14.4.tgz
+ * 3.14.5_x32     : https://www.python.org/ftp/python/3.14.5/python-3.14.5.exe
+ * 3.14.5_x64     : https://www.python.org/ftp/python/3.14.5/python-3.14.5-amd64.exe
+ * 3.14.5_arm64   : https://www.python.org/ftp/python/3.14.5/python-3.14.5-arm64.exe
+ * 3.14.5_src     : https://www.python.org/ftp/python/3.13.5/Python-3.14.5.tgz
  *
- * 3.13.12_x32    : https://www.python.org/ftp/python/3.13.12/python-3.13.12.exe
- * 3.13.12_x64    : https://www.python.org/ftp/python/3.13.12/python-3.13.12-amd64.exe
- * 3.13.12_arm64  : https://www.python.org/ftp/python/3.13.12/python-3.13.12-arm64.exe
- * 3.13.12_src    : https://www.python.org/ftp/python/3.13.12/Python-3.13.12.tgz
+ * 3.13.13_x32    : https://www.python.org/ftp/python/3.13.13/python-3.13.13.exe
+ * 3.13.13_x64    : https://www.python.org/ftp/python/3.13.13/python-3.13.13-amd64.exe
+ * 3.13.13_arm64  : https://www.python.org/ftp/python/3.13.13/python-3.13.13-arm64.exe
+ * 3.13.13_src    : https://www.python.org/ftp/python/3.13.13/Python-3.13.13.tgz
  * 
  * future items :
  *                 pull version info from python.org
@@ -215,8 +215,8 @@ namespace InstallPython {
         public static async Task Main(string[] args) {
 
             // the two latest versions of Python
-            string latest = "3.14.4";
-            string older = "3.13.12";
+            string latest = "3.14.5";
+            string older = "3.13.13";
 
             // user variables
             string userHome = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
