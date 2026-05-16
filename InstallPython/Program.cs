@@ -9,7 +9,7 @@
  * 3.14.5_x32     : https://www.python.org/ftp/python/3.14.5/python-3.14.5.exe
  * 3.14.5_x64     : https://www.python.org/ftp/python/3.14.5/python-3.14.5-amd64.exe
  * 3.14.5_arm64   : https://www.python.org/ftp/python/3.14.5/python-3.14.5-arm64.exe
- * 3.14.5_src     : https://www.python.org/ftp/python/3.13.5/Python-3.14.5.tgz
+ * 3.14.5_src     : https://www.python.org/ftp/python/3.14.5/Python-3.14.5.tgz
  *
  * 3.13.13_x32    : https://www.python.org/ftp/python/3.13.13/python-3.13.13.exe
  * 3.13.13_x64    : https://www.python.org/ftp/python/3.13.13/python-3.13.13-amd64.exe
