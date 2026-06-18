@@ -2,19 +2,21 @@
  * 
  * Author         : freemanbach
  * email          : flo@radford.edu
- * Date           : 20260511
+ * Date           : 20260617
  * desc           : a C# python installer
  * archecture     : ( X86, X64, Arm64 )
  * 
- * 3.14.5_x32     : https://www.python.org/ftp/python/3.14.5/python-3.14.5.exe
- * 3.14.5_x64     : https://www.python.org/ftp/python/3.14.5/python-3.14.5-amd64.exe
- * 3.14.5_arm64   : https://www.python.org/ftp/python/3.14.5/python-3.14.5-arm64.exe
- * 3.14.5_src     : https://www.python.org/ftp/python/3.14.5/Python-3.14.5.tgz
+ * 3.14.6_x32     : https://www.python.org/ftp/python/3.14.6/python-3.14.6.exe
+ * 3.14.6_x64     : https://www.python.org/ftp/python/3.14.6/python-3.14.6-amd64.exe
+ * 3.14.6_arm64   : https://www.python.org/ftp/python/3.14.6/python-3.14.6-arm64.exe
+ * 3.14.6_src     : https://www.python.org/ftp/python/3.14.6/Python-3.14.6.tgz
  *
- * 3.13.13_x32    : https://www.python.org/ftp/python/3.13.13/python-3.13.13.exe
- * 3.13.13_x64    : https://www.python.org/ftp/python/3.13.13/python-3.13.13-amd64.exe
- * 3.13.13_arm64  : https://www.python.org/ftp/python/3.13.13/python-3.13.13-arm64.exe
- * 3.13.13_src    : https://www.python.org/ftp/python/3.13.13/Python-3.13.13.tgz
+ * 3.13.14_x32    : https://www.python.org/ftp/python/3.13.14/python-3.13.14.exe
+ * 3.13.14_x64    : https://www.python.org/ftp/python/3.13.14/python-3.13.14-amd64.exe
+ * 3.13.14_arm64  : https://www.python.org/ftp/python/3.13.14/python-3.13.14-arm64.exe
+ * 3.13.14_src    : https://www.python.org/ftp/python/3.13.14/Python-3.13.14.tgz
+ * 
+ * link: https://www.python.org/downloads/windows/
  * 
  * future items :
  *                 pull version info from python.org
@@ -23,7 +25,6 @@
  *                 allow to install additional python packages (datascience, networking, security, etc...)
  *                 
  * use case      : may work well in an University / College Setting for mass deployment
- * Automation    : look at lines 236 and 237 if you want automation, set choice to 1 or 2
  */
 
 using System;
@@ -164,7 +165,6 @@ namespace InstallPython {
                 Console.WriteLine($"MD5 Sum:  {sb.ToString()} \n");
             }
         }
-
         public static async Task processByArch(string baseurl, string version, string atype, string path) {
 
             string[] tmp;
@@ -211,12 +211,11 @@ namespace InstallPython {
             Console.WriteLine($"--------------------------------------------------");
             Console.Write(">>> ");
         }
-
         public static async Task Main(string[] args) {
 
             // the two latest versions of Python
-            string latest = "3.14.5";
-            string older = "3.13.13";
+            string latest = "3.14.6";
+            string older = "3.13.14";
 
             // user variables
             string userHome = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -234,25 +233,27 @@ namespace InstallPython {
             // menu
             menu(latest, older);
             string temp = Console.ReadLine();
-            bool ans = int.TryParse(temp, out choice);
+            //bool ans = int.TryParse(temp, out choice);
 
-            if ( !ans ) {
+            if ( !int.TryParse(temp, out choice)) {
                 Console.WriteLine("Invalid Selection !");
                 Environment.Exit(1);
             } else {
 
                 if (choice == 1) {
+
                     await processByArch(baseurl, latest, arch, path );
+
                 } else if ( choice == 2) {
+                
                     await processByArch(baseurl, older, arch, path);
-                } else if (choice == 3) {
-                    Console.WriteLine("Exiting........"); 
-                    Environment.Exit(0);
-                } else {
-                    // invalid inputs
-                    Console.WriteLine($"Invalid Selection {choice} ");
+                }
+                else {
+                    // exit program
+                    Console.WriteLine($"Invalid Selection: {choice} ");
                     Environment.Exit(0);
                 }
+
             }
         }  
     }
