@@ -103,6 +103,5 @@ namespace WhoIsThis {
                 }
             }
         } // end internal
-
     }// class program
 } // namespace
