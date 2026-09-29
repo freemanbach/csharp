@@ -1,14 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using System.Xml;
 using HtmlAgilityPack;
-using System.Xml.XPath;
 using System.Collections.Generic;
 using System.Linq;
-// using System.Net.Http;
-// using System.Threading;
-// using System.Threading.Tasks;
 
 // dotnet build
 namespace parseMortgage {
@@ -68,20 +63,23 @@ namespace parseMortgage {
         ** returns rate[1] is 15 years Mortgage
         **/
         public static List<string> getBankrateRates() {
+        // public static void getBankrateRates() {
 
+            List<string> tmplist = new List<string>();
             List<string> rates = new List<string>();
-            var tmp = "";
             string url = "https://www.bankrate.com/mortgages/mortgage-rates/#mortgage-industry-insights";
             HtmlWeb web = new HtmlWeb();
             var html = web.Load(url);
-            var node = html.DocumentNode.SelectNodes("//td[contains(@class,'series-percent')]");
+            //var node = html.DocumentNode.SelectNodes("//td[contains(@class,'series-percent')]");
+            var node = html.DocumentNode.SelectNodes("//td[@data-type='numeric']");
 
             foreach (var a in node){
-                tmp = a.InnerHtml.ToString().Trim();
-                tmp = tmp.Remove(tmp.Length - 1);
-                rates.Add(tmp);
+                var tmp = a.InnerHtml.ToString().Trim();
+                string tmp1 = tmp.Remove(tmp.Length - 1);
+                tmplist.Add(tmp1);
             }
-            rates.RemoveRange(2,rates.Count-2);
+            rates.Add(tmplist[0]);
+            rates.Add(tmplist[4]);
 
             return rates;
         }
@@ -90,18 +88,17 @@ namespace parseMortgage {
         public static void Main(string [] args) {
 
             DateTime dt = DateTime.Now;
+
             List <string> mortage_rate = new List<string>();
             List <string> mortage_items = new List<string>{"30 Years Mortgage Rate", "15 Years Mortgage Rate" };
-
-            Console.WriteLine("\n");
-            Console.WriteLine("Date: " + dt.ToString("MM/dd/yyyy HH:mm") + " EST.");
-            Console.WriteLine("\n");
+            
+            Console.WriteLine("Date: " + dt.ToString("MM/dd/yyyy HH:mm") + " -- Local Time.");
             mortage_rate = getNewsDailyRates();
+            Console.WriteLine();
             Console.WriteLine("From News Daily Rate:\n");
             for (int i = 0; i <mortage_rate.Count; i++) {
                 Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}%");
             }
-            Console.WriteLine("\n");
             mortage_rate.Clear();
             
             mortage_rate = getFreddieMacRates();
@@ -110,7 +107,6 @@ namespace parseMortgage {
             for (int i = 0; i <mortage_rate.Count; i++) {
                 Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}%");
             }
-            Console.WriteLine("\n");
             mortage_rate.Clear();
 
             mortage_rate = getBankrateRates();
@@ -119,8 +115,8 @@ namespace parseMortgage {
             for (int i = 0; i <mortage_rate.Count; i++) {
                 Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}%");
             }
-            Console.WriteLine("\n");
             mortage_rate.Clear();
+            Console.WriteLine();
             Console.WriteLine("Press enter to continue...");
             Console.ReadLine();
         }
