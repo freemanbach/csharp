@@ -63,14 +63,12 @@ namespace parseMortgage {
         ** returns rate[1] is 15 years Mortgage
         **/
         public static List<string> getBankrateRates() {
-        // public static void getBankrateRates() {
 
             List<string> tmplist = new List<string>();
             List<string> rates = new List<string>();
             string url = "https://www.bankrate.com/mortgages/mortgage-rates/#mortgage-industry-insights";
             HtmlWeb web = new HtmlWeb();
             var html = web.Load(url);
-            //var node = html.DocumentNode.SelectNodes("//td[contains(@class,'series-percent')]");
             var node = html.DocumentNode.SelectNodes("//td[@data-type='numeric']");
 
             foreach (var a in node){
