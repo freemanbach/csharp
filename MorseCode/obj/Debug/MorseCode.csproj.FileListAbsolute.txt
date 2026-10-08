@@ -1,0 +1,15 @@
+C:\Users\flo1\github\csharp\MorseCode\bin\Debug\MorseCode.exe.config
+C:\Users\flo1\github\csharp\MorseCode\bin\Debug\MorseCode.exe
+C:\Users\flo1\github\csharp\MorseCode\bin\Debug\MorseCode.pdb
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\MorseCode.csproj.AssemblyReference.cache
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\MainWindow.g.cs
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\App.g.cs
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\MorseCode_MarkupCompile.cache
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\MorseCode_MarkupCompile.lref
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\MainWindow.baml
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\MorseCode.g.resources
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\MorseCode.Properties.Resources.resources
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\MorseCode.csproj.GenerateResource.cache
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\MorseCode.csproj.CoreCompileInputs.cache
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\MorseCode.exe
+C:\Users\flo1\github\csharp\MorseCode\obj\Debug\MorseCode.pdb
