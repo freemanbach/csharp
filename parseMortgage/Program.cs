@@ -115,6 +115,7 @@ namespace parseMortgage {
             }
             Console.WriteLine();
             mortage_rate.Clear();
+            Console.WriteLine();
             Console.WriteLine("Press enter to continue...");
             Console.ReadLine();
         }
