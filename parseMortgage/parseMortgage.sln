@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "parseMortgage", "parseMortgage.csproj", "{561FB16B-11E2-4555-8E99-139935482F19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{561FB16B-11E2-4555-8E99-139935482F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{561FB16B-11E2-4555-8E99-139935482F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{561FB16B-11E2-4555-8E99-139935482F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{561FB16B-11E2-4555-8E99-139935482F19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3854131C-52BD-4B00-9263-1DA15BD7EEDB}
+	EndGlobalSection
+EndGlobal
