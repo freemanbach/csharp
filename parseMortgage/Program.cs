@@ -113,6 +113,7 @@ namespace parseMortgage {
             for (int i = 0; i <mortage_rate.Count; i++) {
                 Console.WriteLine($"{mortage_items[i]} {mortage_rate[i]}%");
             }
+            Console.WriteLine();
             mortage_rate.Clear();
             Console.WriteLine();
             Console.WriteLine("Press enter to continue...");

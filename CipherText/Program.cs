@@ -16,7 +16,7 @@ using Org.BouncyCastle.Utilities.Encoders;
 
 
 namespace CipherText {
-    internal class Program {
+    class Program {
         // use this method to gen keyparam
         // https://www.bouncycastle.org/
         public static ICipherParameters keyParameterGenerationMethod1(int keySize) {
