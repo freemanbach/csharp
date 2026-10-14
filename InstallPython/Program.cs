@@ -2,19 +2,19 @@
  * 
  * Author         : freemanbach
  * email          : flo@radford.edu
- * Date           : 20260617
+ * Date           : 20261013
  * desc           : a C# python installer
  * archecture     : ( X86, X64, Arm64 )
  * 
- * 3.14.6_x32     : https://www.python.org/ftp/python/3.14.6/python-3.14.6.exe
- * 3.14.6_x64     : https://www.python.org/ftp/python/3.14.6/python-3.14.6-amd64.exe
- * 3.14.6_arm64   : https://www.python.org/ftp/python/3.14.6/python-3.14.6-arm64.exe
- * 3.14.6_src     : https://www.python.org/ftp/python/3.14.6/Python-3.14.6.tgz
+ * 3.15.0_x32     : https://www.python.org/ftp/python/3.15.0/python-3.15.0.exe
+ * 3.15.0_x64     : https://www.python.org/ftp/python/3.15.0/python-3.15.0-amd64.exe
+ * 3.15.0_arm64   : https://www.python.org/ftp/python/3.15.0/python-3.15.0-arm64.exe
+ * 3.15.0_src     : https://www.python.org/ftp/python/3.15.0/Python-3.15.0.tgz
  *
- * 3.13.14_x32    : https://www.python.org/ftp/python/3.13.14/python-3.13.14.exe
- * 3.13.14_x64    : https://www.python.org/ftp/python/3.13.14/python-3.13.14-amd64.exe
- * 3.13.14_arm64  : https://www.python.org/ftp/python/3.13.14/python-3.13.14-arm64.exe
- * 3.13.14_src    : https://www.python.org/ftp/python/3.13.14/Python-3.13.14.tgz
+ * 3.14.8_x32    : https://www.python.org/ftp/python/3.13.14/python-3.14.8.exe
+ * 3.14.8_x64    : https://www.python.org/ftp/python/3.13.14/python-3.14.8-amd64.exe
+ * 3.14.8_arm64  : https://www.python.org/ftp/python/3.13.14/python-3.14.8-arm64.exe
+ * 3.14.8_src    : https://www.python.org/ftp/python/3.13.14/Python-3.14.8.tgz
  * 
  * link: https://www.python.org/downloads/windows/
  * 
@@ -214,8 +214,8 @@ namespace InstallPython {
         public static async Task Main(string[] args) {
 
             // the two latest versions of Python
-            string latest = "3.14.6";
-            string older = "3.13.14";
+            string latest = "3.15.0";
+            string older = "3.14.8";
 
             // user variables
             string userHome = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
