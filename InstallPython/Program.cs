@@ -2,7 +2,7 @@
  * 
  * Author         : freemanbach
  * email          : flo@radford.edu
- * Date           : 20261013
+ * Date           : 20261014
  * desc           : a C# python installer
  * archecture     : ( X86, X64, Arm64 )
  * 
@@ -240,20 +240,21 @@ namespace InstallPython {
                 Environment.Exit(1);
             } else {
 
-                if (choice == 1) {
-
+                if (choice==1) {
+                    // newest version
                     await processByArch(baseurl, latest, arch, path );
-
-                } else if ( choice == 2) {
-                
+                } else if (choice==2) {
+                    // older version
                     await processByArch(baseurl, older, arch, path);
-                }
-                else {
-                    // exit program
+                } else if (choice==3) {
+                    // User choose to Quit
+                    Console.WriteLine("End Program !");
+                    Environment.Exit(0);
+                } else {
+                    // exit program for all other reasons
                     Console.WriteLine($"Invalid Selection: {choice} ");
                     Environment.Exit(0);
                 }
-
             }
         }  
     }
