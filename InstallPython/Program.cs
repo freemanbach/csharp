@@ -11,10 +11,10 @@
  * 3.15.0_arm64   : https://www.python.org/ftp/python/3.15.0/python-3.15.0-arm64.exe
  * 3.15.0_src     : https://www.python.org/ftp/python/3.15.0/Python-3.15.0.tgz
  *
- * 3.14.8_x32    : https://www.python.org/ftp/python/3.13.14/python-3.14.8.exe
- * 3.14.8_x64    : https://www.python.org/ftp/python/3.13.14/python-3.14.8-amd64.exe
- * 3.14.8_arm64  : https://www.python.org/ftp/python/3.13.14/python-3.14.8-arm64.exe
- * 3.14.8_src    : https://www.python.org/ftp/python/3.13.14/Python-3.14.8.tgz
+ * 3.14.8_x32    : https://www.python.org/ftp/python/3.14.8/python-3.14.8.exe
+ * 3.14.8_x64    : https://www.python.org/ftp/python/3.14.8/python-3.14.8-amd64.exe
+ * 3.14.8_arm64  : https://www.python.org/ftp/python/3.14.8/python-3.14.8-arm64.exe
+ * 3.14.8_src    : https://www.python.org/ftp/python/3.14.8/Python-3.14.8.tgz
  * 
  * link: https://www.python.org/downloads/windows/
  * 
